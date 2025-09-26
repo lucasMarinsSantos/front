@@ -39,7 +39,7 @@ export default function DetalheColaboradorPage({ params }) {
       setLoading(true);
       try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch(`http://localhost:3001/api/colaboradores/${colaboradorId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/${colaboradorId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -119,7 +119,7 @@ export default function DetalheColaboradorPage({ params }) {
 
       if (formData.tipo_localizacao && formData.tipo_localizacao !== initialData.tipo_localizacao) {
         try {
-          await fetch('http://localhost:3001/api/localizacoes', {
+          await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes', {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -135,7 +135,7 @@ export default function DetalheColaboradorPage({ params }) {
         }
       }
 
-      const response = await fetch(`http://localhost:3001/api/colaboradores/${colaboradorId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/${colaboradorId}`, {
         method: "PUT",
         headers: {
           'Authorization': `Bearer ${token}`,

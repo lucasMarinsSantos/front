@@ -45,7 +45,7 @@ export default function DetalheClientePage({ params }) {
       setLoading(true);
       try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch(`http://localhost:3001/api/clientes/${clienteId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/clientes/${clienteId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -115,7 +115,7 @@ export default function DetalheClientePage({ params }) {
     try {
       const token = localStorage.getItem('authToken');
       const response = await fetch(
-        `http://localhost:3001/api/clientes/${clienteId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/clientes/${clienteId}`,
         {
           method: 'PUT',
           headers: {

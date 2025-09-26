@@ -25,7 +25,7 @@ export default function InteracoesClientePage() {
       try {
         const token = localStorage.getItem("authToken");
         const response = await fetch(
-          `http://localhost:3001/api/clients/${clientId}/interactions`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/clients/${clientId}/interactions`,
           { headers: { "Authorization": `Bearer ${token}` } }
         );
         if (!response.ok) throw new Error("Erro ao buscar interações");
@@ -58,7 +58,7 @@ export default function InteracoesClientePage() {
         detalhes: form.detalhes
       };
       const response = await fetch(
-        `http://localhost:3001/api/clients/${clientId}/interactions`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/clients/${clientId}/interactions`,
         {
           method: 'POST',
           headers: {

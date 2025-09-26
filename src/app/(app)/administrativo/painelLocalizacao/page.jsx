@@ -15,7 +15,7 @@ export default function PainelLocalTrabalho() {
     async function fetchDados() {
       try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch("http://localhost:3001/api/colaboradores", {
+        const response = await fetch("${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores", {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

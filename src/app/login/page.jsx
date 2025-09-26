@@ -42,7 +42,7 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/colaboradores/login', {
+      const response = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

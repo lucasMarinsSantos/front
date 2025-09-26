@@ -49,7 +49,7 @@ export default function PaginaColaboradores() {
       
       console.log('Enviando parâmetros:', Object.fromEntries(params));
       
-      const response = await fetch(`http://localhost:3001/api/colaboradores?${params}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores?${params}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

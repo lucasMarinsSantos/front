@@ -53,9 +53,9 @@ export function Header() {
     if (id) {
       let endpoint = '';
       if (pathname.includes('/colaboradores')) {
-        endpoint = `http://localhost:3001/api/colaboradores/${id}`;
+        endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/${id}`;
       } else if (pathname.includes('/clientes')) {
-        endpoint = `http://localhost:3001/api/clientes/${id}`;
+        endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/clientes/${id}`;
       }
 
       if (endpoint) {
@@ -82,7 +82,7 @@ export function Header() {
   const fetchCurrentLocation = async (userId) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`http://localhost:3001/api/localizacoes/colaborador/${userId}/atual`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes/colaborador/${userId}/atual`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -134,7 +134,7 @@ export function Header() {
       
       console.log('Enviando:', { colaborador_id: colaboradorId, tipo_localizacao: valorAPI });
       
-      const response = await fetch('http://localhost:3001/api/localizacoes/', {
+      const response = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -101,7 +101,7 @@ export default function CadastroColaborador() {
     try {
       const authToken = localStorage.getItem('authToken');  
   
-      const response = await fetch('http://localhost:3001/api/colaboradores', {
+      const response = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
