@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
+import { API_BASE_URL } from '../config/api';
+
 const nextConfig = {
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+    NEXT_PUBLIC_API_URL: API_BASE_URL || 'http://localhost:3001'
   },
   async headers() {
     return [

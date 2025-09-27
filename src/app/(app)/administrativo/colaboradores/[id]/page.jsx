@@ -4,6 +4,7 @@ import { useRouter, useParams } from 'next/navigation';
 import styles from './detalhe.module.css';
 import { Edit, Save, XCircle } from 'lucide-react';
 import React from 'react';
+import { API_BASE_URL } from '../config/api';
 
 export default function DetalheColaboradorPage({ params }) {
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function DetalheColaboradorPage({ params }) {
       setLoading(true);
       try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/${colaboradorId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/colaboradores/${colaboradorId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -119,7 +120,7 @@ export default function DetalheColaboradorPage({ params }) {
 
       if (formData.tipo_localizacao && formData.tipo_localizacao !== initialData.tipo_localizacao) {
         try {
-          await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes`, {
+          await fetch(`${API_BASE_URL}/api/localizacoes`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -135,7 +136,7 @@ export default function DetalheColaboradorPage({ params }) {
         }
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/${colaboradorId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/colaboradores/${colaboradorId}`, {
         method: "PUT",
         headers: {
           'Authorization': `Bearer ${token}`,

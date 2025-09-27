@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./detalheClientes.module.css";
 import { Edit, Save, XCircle, MessageCircle } from "lucide-react";
+import { API_BASE_URL } from '../config/api';
 
 export default function DetalheClientePage({ params }) {
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function DetalheClientePage({ params }) {
       setLoading(true);
       try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/clientes/${clienteId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/clientes/${clienteId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -115,7 +116,7 @@ export default function DetalheClientePage({ params }) {
     try {
       const token = localStorage.getItem('authToken');
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/clientes/${clienteId}`,
+        `${API_BASE_URL}/api/clientes/${clienteId}`,
         {
           method: 'PUT',
           headers: {

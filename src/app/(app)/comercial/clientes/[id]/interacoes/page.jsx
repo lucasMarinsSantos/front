@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import styles from "./interacoes.module.css";
+import { API_BASE_URL } from '../config/api';
 
 export default function InteracoesClientePage() {
   const { id: clientId } = useParams();
@@ -25,7 +26,7 @@ export default function InteracoesClientePage() {
       try {
         const token = localStorage.getItem("authToken");
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/clients/${clientId}/interactions`,
+          `${API_BASE_URL}/api/clients/${clientId}/interactions`,
           { headers: { "Authorization": `Bearer ${token}` } }
         );
         if (!response.ok) throw new Error("Erro ao buscar interações");
@@ -58,7 +59,7 @@ export default function InteracoesClientePage() {
         detalhes: form.detalhes
       };
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/clients/${clientId}/interactions`,
+        `${API_BASE_URL}/api/clients/${clientId}/interactions`,
         {
           method: 'POST',
           headers: {

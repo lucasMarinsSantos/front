@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Link from "next/link";
 import { UserRoundPlus, MapPin } from "lucide-react";
 import styles from "./colaborador.module.css";
+import { API_BASE_URL } from '../config/api';
 
 export default function PaginaColaboradores() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function PaginaColaboradores() {
       
       console.log('Enviando parâmetros:', Object.fromEntries(params));
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores?${params}`, {
+      const response = await fetch(`${API_BASE_URL}/api/colaboradores?${params}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

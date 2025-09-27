@@ -4,6 +4,7 @@ import styles from './header.module.css';
 import { Bell, ArrowLeft, ChevronDown } from 'lucide-react';
 import { usePathname, useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { API_BASE_URL } from '../config/api';
 
 export function Header() {
   const pathname = usePathname();
@@ -53,9 +54,9 @@ export function Header() {
     if (id) {
       let endpoint = '';
       if (pathname.includes('/colaboradores')) {
-        endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores/${id}`;
+        endpoint = `${API_BASE_URL}/api/colaboradores/${id}`;
       } else if (pathname.includes('/clientes')) {
-        endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api/clientes/${id}`;
+        endpoint = `${API_BASE_URL}/api/clientes/${id}`;
       }
 
       if (endpoint) {
@@ -82,7 +83,7 @@ export function Header() {
   const fetchCurrentLocation = async (userId) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes/colaborador/${userId}/atual`, {
+      const response = await fetch(`${API_BASE_URL}/api/localizacoes/colaborador/${userId}/atual`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -134,7 +135,7 @@ export function Header() {
       
       console.log('Enviando:', { colaborador_id: colaboradorId, tipo_localizacao: valorAPI });
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes/`, {
+      const response = await fetch(`${API_BASE_URL}/api/localizacoes/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

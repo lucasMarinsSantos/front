@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { mockTemplates } from './listaChecklists';
 import styles from './agregados.module.css';
+import { API_BASE_URL } from '../config/api';
 
 // --- Componentes de Ícones (para manter o código limpo) ---
 const CheckIcon = () => (
@@ -13,7 +14,7 @@ const SpinnerIcon = () => (
 );
 
 export default function ChecklistPage() {
-  const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}`; 
+  const API_BASE_URL = `${API_BASE_URL}`; 
   const UPLOAD_ENDPOINT = `${API_BASE_URL}/api/files/upload`;
   const SUBMIT_ENDPOINT = `${API_BASE_URL}/api/checklists/responses`;
 

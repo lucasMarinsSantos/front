@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Home, Building, Calendar, GraduationCap } from 'lucide-react';
 import styles from './localTrabalho.module.css';
+import { API_BASE_URL } from '../config/api';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,7 +16,7 @@ export default function PainelLocalTrabalho() {
     async function fetchDados() {
       try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/colaboradores`, {
+        const response = await fetch(`${API_BASE_URL}/api/colaboradores`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
