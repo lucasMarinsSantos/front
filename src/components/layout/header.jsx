@@ -134,7 +134,7 @@ export function Header() {
       
       console.log('Enviando:', { colaborador_id: colaboradorId, tipo_localizacao: valorAPI });
       
-      const response = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

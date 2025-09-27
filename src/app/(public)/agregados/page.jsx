@@ -13,7 +13,7 @@ const SpinnerIcon = () => (
 );
 
 export default function ChecklistPage() {
-  const API_BASE_URL = '${process.env.NEXT_PUBLIC_API_URL}'; 
+  const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}`; 
   const UPLOAD_ENDPOINT = `${API_BASE_URL}/api/files/upload`;
   const SUBMIT_ENDPOINT = `${API_BASE_URL}/api/checklists/responses`;
 

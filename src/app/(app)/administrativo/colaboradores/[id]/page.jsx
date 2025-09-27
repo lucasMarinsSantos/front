@@ -119,7 +119,7 @@ export default function DetalheColaboradorPage({ params }) {
 
       if (formData.tipo_localizacao && formData.tipo_localizacao !== initialData.tipo_localizacao) {
         try {
-          await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes', {
+          await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/localizacoes`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${token}`,
